@@ -7,37 +7,43 @@
 
 <form action="/Employee/EditeInDB">
     <input value="@Model.Id" name ="Id" hidden/>
+    <label for="Name">Name</label>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="Name" name="Name" />
-        <label for="floatingInput">Name</label>
+        <input type="text" id="Name" name="Name" value="@Model.Name" />
     </div>
+    <label for="age">Age</label>
     <div class="form-floating mb-3">
-        <input type="number" class="form-control" id="age" name="age" />
-        <label for="floatingInput">Age</label>
+        <input type="number"  id="age" name="age" value="@Model.age"  />
     </div>
+    <label for="Address">Address</label>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="Address" name="Address" />
-        <label for="floatingInput">Address</label>
+        <input type="text" id="Address" name="Address" value="@Model.Address" />
     </div>
+    <label for="Salary">Salary</label>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="Salary" name="Salary" />
-        <label for="floatingInput">Salary</label>
+        <input type="number" id="Salary" name="Salary" value="@Model.Salary" />
     </div>
+    <label for="Email">Email address</label>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="Email" name="Email" />
-        <label for="floatingInput">Email address</label>
+        <input type="text" id="Email" name="Email" value="@Model.Email"/>
     </div>
+    <label for="Password">Password</label>
     <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" name="Password" />
-        <label for="floatingPassword">Password</label>
+        <input type="text" id="Password" name="Password" value="@Model.Password"/>
     </div>
-    <br />
+    <label for="Office">Office</label>
     <div class="col-md-4">
         <select name="Office_Id" id="Office" class="form-select">
-            <option selected>Office</option>
             @foreach (Office off in ViewBag.Off)
             {
-                <option value="@off.Id">@off.Name</option>
+                if(off.Id == Model.Office_Id)
+                {
+                    <option value="@off.Id" selected>@off.Name</option>
+                }
+                else
+                {
+                    <option value="@off.Id" >@off.Name</option>
+                }
             }
         </select>
     </div>
@@ -46,27 +52,3 @@
         <button type="submit" class="btn btn-primary">Edit</button>
     </div>
 </form>
-@*
-<div class="col-md-4">
-    <select name="Office_Id" id="Office" class="form-select">
-        <option selected>Office</option>
-        @foreach (Office off in ViewBag.Off)
-        {
-            <option value="@off.Id">@off.Name</option>
-        }
-
-    </select>
-</div>
-<label for="Office">Office</label>
-<select name="Office_Id" id="Office">
-    @foreach (Office off in ViewBag.Off)
-    {
-        @if (off.Id == Model.Office_Id)
-        {
-            <option value="@off.Id" selected>@off.Name</option>
-
-        }
-        <option value="@off.Id">@off.Name</option>
-    }
-</select>
-*@
