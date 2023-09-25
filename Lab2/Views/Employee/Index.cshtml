@@ -4,26 +4,36 @@
     int index = 1;
 }
 
-<h1>Index</h1>
-<hr/>
-<a href="Employee/NewForm">Add Employee</a>
+<h1>Employees</h1>
+
+<a href="/Employee/NewForm" class="btn btn-outline-primary">Add Employee</a>
 <hr />
-<table>
-    <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Controls</th>
-    </tr>
+<table class="table table table-striped">
+    <thead>
+        <tr class="table-primary">
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Controls</th>
+        </tr>
+    </thead>
+    <tbody>
     @foreach(Employee emp in Model)
     {
         <tr>
             <td>@(index++)</td>
             <td>@emp.Name</td>
             <td>@emp.Email</td>
+            <td>@emp.Address</td>
+            <td>@emp.age</td>
             <td>
-                <a href="/Employee/Details/@emp.Id">Details</a> |
+                <a href="/Employee/Details/@emp.Id"><i class="fa-solid fa-circle-info"></i></a> |
+                <a href="/Employee/EditForm/@emp.Id"><i class="fa-solid fa-pen-to-square"></i></a> |
+                <a href="/Employee/Delete/@emp.Id"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
     }
+    </tbody>
 </table>
